@@ -1,0 +1,22 @@
+%h1= @user.email
+%h2= "Cash: #{number_to_currency(@user.cash)}"
+
+#checkboxes
+  = render :partial => "stocks_checkboxes"
+
+= form_for Stock.new, :remote => true do |f|
+  = f.text_field :symbol, :placeholder => "symbol"
+  = f.number_field :quantity, :placeholder => "quantity"
+  = f.button "Buy", :type => "submit"
+
+/= button_tag "Refresh", :id => "refresh_stocks"
+
+%table#stocks
+  = render :partial => "stocks_rows"
+
+#test
+
+%link{:rel => 'stylesheet', :href => 'http://cdn.oesmith.co.uk/morris-0.4.3.min.css'}
+%script{:src  => "//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"}
+%script{:src  => "//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"}
+%script{:src  => "http://cdn.oesmith.co.uk/morris-0.4.3.min.js"}

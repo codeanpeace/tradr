@@ -1,0 +1,15 @@
+%thead
+  %tr
+    %th Symbol
+    %th Quantity
+    %th Starting Price
+    %th Latest Price
+    %th Profit
+%tbody
+  - @stocks.each do |stock|
+    %tr
+      %td= stock.symbol
+      %td= stock.quantity
+      %td= stock.starting_price
+      %td= stock.latest_price
+      %td= number_to_currency(stock.profit)
